@@ -1,0 +1,26 @@
+{
+  "name": "ip-location",
+  "version": "1.0.0",
+  "description": "Search location fro IP-address",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kishanhj/IP-Location-tracker.git"
+  },
+  "author": "Kishan Huliyar Jagadeesh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kishanhj/IP-Location-tracker/issues"
+  },
+  "homepage": "https://github.com/kishanhj/IP-Location-tracker#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "handlebars": "^4.7.3",
+    "mongo": "^0.1.0"
+  }
+}

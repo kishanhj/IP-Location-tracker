@@ -1,0 +1,6 @@
+{
+    "mongoConfig": {
+      "serverUrl": "mongodb://localhost:27017/",
+      "database": "IP_To_Location_DB"
+    }
+  }

@@ -1,0 +1,24 @@
+<div>
+    <form action = "/search" id="searchForm" class="searchForm" method="POST">
+
+        {{#if errors.length}}
+        {{#each errors}}
+        <div>{{this}}</div>
+        {{/each}}
+        {{/if}}
+
+        {{#if location}}
+        <input id="ipSearchField" name="ip" value="{{location.ip}}" type="text" placeholder="Enter IP address">
+        {{else}}
+        <input id="ipSearchField" name="ip" type="text" placeholder="Enter IP address">
+        {{/if}}
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+
+    {{#if location}}
+        <div>City : {{location.city}}</div>
+        <div>State : {{location.state}}</div>
+        <div>Country : {{location.country}}</div>
+    {{/if}}
+
+</div>
