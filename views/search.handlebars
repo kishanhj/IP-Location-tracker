@@ -1,4 +1,5 @@
-<div>
+<div class="container">
+    <div class="form-group">
     <form action = "/search" id="searchForm" class="searchForm" method="POST">
 
         {{#if errors.length}}
@@ -8,12 +9,13 @@
         {{/if}}
 
         {{#if location}}
-        <input id="ipSearchField" name="ip" value="{{location.ip}}" type="text" placeholder="Enter IP address">
+        <input class="form-control" id="ipSearchField" name="ip" value="{{location.ip}}" type="text" placeholder="Enter IP address">
         {{else}}
         <input id="ipSearchField" name="ip" type="text" placeholder="Enter IP address">
         {{/if}}
         <button class="btn btn-primary" type="submit">Search</button>
     </form>
+    </div>
 
     {{#if location}}
         <div>City : {{location.city}}</div>
@@ -22,18 +24,20 @@
         <div id="map" style="height: 400px;width: 400px"></div>
         <script>
             function initMap() {
+    var lat = {{location.lat}};
+    var lng = {{location.lng}};
 	var mapOptions = {
 		zoom: 8,
-		center: new google.maps.LatLng(40.7, -74),
+		center: new google.maps.LatLng(lat, lng),
 		mapTypeId: 'roadmap'
 	};
 	var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-	var goldenGatePosition = {lat: 40.72816,lng: -74.07764};
+	var goldenGatePosition = {lat: lat,lng: lng};
 	var marker = new google.maps.Marker({
 			position: goldenGatePosition,
 			map: map,
-			title: 'Golden Gate Bridge'
+			title: '{{location.city}}'
 			});
 
 }

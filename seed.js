@@ -7,6 +7,5 @@ fs.createReadStream('seed.csv')
   .pipe(csv(['ip_start', 'ip_end','continent','country','stateprov','city','latitude','longitude']))
   .on('data', (data) => results.push(data))
   .on('end', () => {
-    console.log(results);
   locationDataApi.addAllLocation(results);
   });

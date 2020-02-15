@@ -1,5 +1,6 @@
 const mongoCollection = require("../database/mongoCollection");
 const locationCollectionObj = mongoCollection.location;
+const IPUtils = require("../Utils/IPUtils")
 
 const getLocation = async (ip) => {
     if(!ip || typeof ip !== 'string') throw "You must enter IP Address before searching";
@@ -8,24 +9,55 @@ const getLocation = async (ip) => {
     if(numArr.length !== 4) throw "Invalid Ip Format";
 
     numArr.forEach( (num) => {
-        if(isNaN(num) || parseInt(num) < 0 || parseInt(num) > 999)
+        if(isNaN(num) || parseInt(num) < 0 || parseInt(num) > 255)
            throw "Invalid Ip Format";} );
-    
 
-    const dummyData = {
+    const IPNumber = IPUtils.convertIPtoInt(ip);
+    // console.log(IPNumber);
+    const locationCollection = await locationCollectionObj();
+    const res = await locationCollection.findOne({$and: [{ip_start:{$lte : IPNumber}},
+        {ip_end : {$gte : IPNumber}}]})
+    
+    if(res == null)
+        throw "IP not found";
+
+    const data = {
         ip: ip,
-        city: "Jersey city",
-        state: "New Jersey",
-        country : "United States"
+        city: res.location.city,
+        state: res.location.stateprov,
+        country : res.location.country,
+        lat : parseFloat(res.location.latitude),
+        lng : parseFloat(res.location.longitude)
     }
 
-    return dummyData;
+    return data;
     
 }
 
-const addAllLocation =  async(data)=>{
+
+
+const addAllLocation =  async(locations)=>{
     const locationCollection = await locationCollectionObj();
-    const insertInfo = await locationCollection.insertMany(data);
+    locations.forEach( (location) => {
+        addLocation(location);
+    })
+}
+
+const addLocation = async (location) => {
+    const IPStartInt = IPUtils.convertIPtoInt(location.ip_start);
+    const IPEndInt = IPUtils.convertIPtoInt(location.ip_end);
+
+    console.log(IPStartInt);
+    console.log(IPEndInt);
+    
+    const locationObj = {
+        location : location,
+        ip_start : IPStartInt,
+        ip_end : IPEndInt
+    }
+
+    const locationCollection = await locationCollectionObj();
+    const insertInfo = await locationCollection.insertOne(locationObj);
 }
 
 module.exports = {
