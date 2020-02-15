@@ -1,13 +1,11 @@
 const mongoCollection = require("../database/mongoCollection");
-const locationCollection = mongoCollection.location;
+const locationCollectionObj = mongoCollection.location;
 
-const getLocation = async function getLocation(ip){
+const getLocation = async (ip) => {
     if(!ip || typeof ip !== 'string') throw "You must enter IP Address before searching";
 
     var numArr = ip.split(".");
-    if(numArr.length !== 4) throw "Invalid Ip Format"
-    
-    console.log(numArr);
+    if(numArr.length !== 4) throw "Invalid Ip Format";
 
     numArr.forEach( (num) => {
         if(isNaN(num) || parseInt(num) < 0 || parseInt(num) > 999)
@@ -25,6 +23,11 @@ const getLocation = async function getLocation(ip){
     
 }
 
+const addAllLocation =  async(data)=>{
+    const locationCollection = await locationCollectionObj();
+    const insertInfo = await locationCollection.insertMany(data);
+}
+
 module.exports = {
-    getLocation
+    getLocation,addAllLocation
 }

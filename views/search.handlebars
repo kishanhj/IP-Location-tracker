@@ -19,6 +19,29 @@
         <div>City : {{location.city}}</div>
         <div>State : {{location.state}}</div>
         <div>Country : {{location.country}}</div>
+        <div id="map" style="height: 400px;width: 400px"></div>
+        <script>
+            function initMap() {
+	var mapOptions = {
+		zoom: 8,
+		center: new google.maps.LatLng(40.7, -74),
+		mapTypeId: 'roadmap'
+	};
+	var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+	var goldenGatePosition = {lat: 40.72816,lng: -74.07764};
+	var marker = new google.maps.Marker({
+			position: goldenGatePosition,
+			map: map,
+			title: 'Golden Gate Bridge'
+			});
+
+}
+        </script>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbAxSuNRp8b_2ncQ8ENpWgxE0yAVfxjiI&callback=initMap" async defer></script>
     {{/if}}
 
 </div>

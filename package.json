@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/kishanhj/IP-Location-tracker#readme",
   "dependencies": {
+    "csv-parser": "^2.3.2",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "handlebars": "^4.7.3",
