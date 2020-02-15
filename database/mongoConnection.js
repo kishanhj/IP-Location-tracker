@@ -11,8 +11,9 @@ module.exports = async () => {
       useUnifiedTopology: true,
       useNewUrlParser: true
     });
-    _db = await _connection.db(mongoConfig.database);
+     _db = await _connection.db(mongoConfig.database);
+    console.log("connected to remote db!!");
   }
 
-  return _db;
+   return _db;
 };

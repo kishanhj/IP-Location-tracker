@@ -9,6 +9,7 @@ const constructorMethod = app => {
   app.post("/search",async (req,res) => {
       try{
         const location = await locationDataApi.getLocation(req.body.ip);
+        
         res.render("search",{
           "location":location
         });

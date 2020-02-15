@@ -13,7 +13,6 @@ const getLocation = async (ip) => {
            throw "Invalid Ip Format";} );
 
     const IPNumber = IPUtils.convertIPtoInt(ip);
-    // console.log(IPNumber);
     const locationCollection = await locationCollectionObj();
     const res = await locationCollection.findOne({$and: [{ip_start:{$lte : IPNumber}},
         {ip_end : {$gte : IPNumber}}]})
@@ -46,9 +45,6 @@ const addAllLocation =  async(locations)=>{
 const addLocation = async (location) => {
     const IPStartInt = IPUtils.convertIPtoInt(location.ip_start);
     const IPEndInt = IPUtils.convertIPtoInt(location.ip_end);
-
-    console.log(IPStartInt);
-    console.log(IPEndInt);
     
     const locationObj = {
         location : location,
@@ -59,6 +55,8 @@ const addLocation = async (location) => {
     const locationCollection = await locationCollectionObj();
     const insertInfo = await locationCollection.insertOne(locationObj);
 }
+
+// const addSearchHistory
 
 module.exports = {
     getLocation,addAllLocation
