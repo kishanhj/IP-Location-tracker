@@ -21,6 +21,7 @@ const getLocation = async (ip) => {
         throw "IP not found";
 
     const data = {
+        id: res._id,
         ip: ip,
         city: res.location.city,
         state: res.location.stateprov,
@@ -55,8 +56,6 @@ const addLocation = async (location) => {
     const locationCollection = await locationCollectionObj();
     const insertInfo = await locationCollection.insertOne(locationObj);
 }
-
-// const addSearchHistory
 
 module.exports = {
     getLocation,addAllLocation

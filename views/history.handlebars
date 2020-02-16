@@ -1,0 +1,43 @@
+<div class="container bg-secondary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <h1 class="display-4 text-warning font-italic">History</h1>
+    </nav>
+    <div class="form-group">
+    <form action = "/history" id="searchForm" class="searchForm" method="POST">
+        <input type="date" data-provide="datepicker" placeholder="From" name="startDate">
+        <input type="date" data-provide="datepicker" placeholder="To" name="endDate">
+        <input type="number" placeholder="Number of Records" name="numberOfRec">
+        <button class="btn btn-primary float-left no" type="submit">Search</button>
+        </div>
+    </div>
+    </form>
+    </div>
+
+    {{#if history}}
+    {{#if history.length}}
+        <table class="container">
+            <tr class="row justify-content-center">
+            <th>Input</th>
+            <th>Date</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Error</th>
+            </tr>
+        {{#each history}}
+            <tr class="row justify-content-center">
+                <td class="col">{{searchInput}}</td>
+                <td class="col">{{date}}</td>
+                <td class="col">{{city}}</td>
+                <td class="col">{{country}}</td>
+                <td class="col">{{errors}}</td>
+            </tr>
+        {{/each}}
+        </table>
+    {{else}}
+        <div>Sorry, No results found</div>
+    {{/if}}
+    {{/if}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+</div>

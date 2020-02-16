@@ -1,45 +1,53 @@
-<div class="container">
+<div class="container bg-secondary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <h1 class="display-4 text-warning font-italic">Search Location by IP</h1>
+    </nav>
     <div class="form-group">
     <form action = "/search" id="searchForm" class="searchForm" method="POST">
-
         {{#if errors.length}}
         {{#each errors}}
         <div>{{this}}</div>
         {{/each}}
         {{/if}}
-
+        <div class="row">
+        <div class="col-sm-3">
         {{#if location}}
         <input class="form-control" id="ipSearchField" name="ip" value="{{location.ip}}" type="text" placeholder="Enter IP address">
         {{else}}
-        <input id="ipSearchField" name="ip" type="text" placeholder="Enter IP address">
+        <input class="form-control" id="ipSearchField" name="ip" type="text" placeholder="Enter IP address">
         {{/if}}
-        <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+        <div class="col-sm-2">
+        <button class="btn btn-primary float-left no" type="submit">Search</button>
+        <a href="/history" class="btn btn-primary">History</a>
+        </div>
+        </div>
     </form>
     </div>
-
     {{#if location}}
-        <div>City : {{location.city}}</div>
-        <div>State : {{location.state}}</div>
-        <div>Country : {{location.country}}</div>
+            <p class="text-warning">City : {{location.city}}</p>
+        <div></div>
+            <p class="text-warning">State : {{location.state}}</p>
+        <div></div>
+        <div></div>
+            <p class="text-warning">Country : {{location.country}}</p>
         <div id="map" style="height: 400px;width: 400px"></div>
         <script>
             function initMap() {
     var lat = {{location.lat}};
     var lng = {{location.lng}};
-	var mapOptions = {
-		zoom: 8,
-		center: new google.maps.LatLng(lat, lng),
-		mapTypeId: 'roadmap'
-	};
-	var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-	var goldenGatePosition = {lat: lat,lng: lng};
-	var marker = new google.maps.Marker({
-			position: goldenGatePosition,
-			map: map,
-			title: '{{location.city}}'
-			});
-
+    var mapOptions = {
+        zoom: 8,
+        center: new google.maps.LatLng(lat, lng),
+        mapTypeId: 'roadmap'
+    };
+    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    var goldenGatePosition = {lat: lat,lng: lng};
+    var marker = new google.maps.Marker({
+            position: goldenGatePosition,
+            map: map,
+            title: '{{location.city}}'
+            });
 }
         </script>
         
@@ -47,5 +55,4 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbAxSuNRp8b_2ncQ8ENpWgxE0yAVfxjiI&callback=initMap" async defer></script>
     {{/if}}
-
 </div>
