@@ -15,13 +15,9 @@ const addNewSearch = async (searchInput,searchResult,errors) => {
 
     if(errors.length == 1)
         error = errors[0];
-
-    var date = new Date();
-    var dateMil = date/1000;
     const data = {
         searchInput : searchInput,
-        date : date,
-        dateMil : dateMil,
+        date : new Date(),
         city : city,
         country : country,
         errors: error
