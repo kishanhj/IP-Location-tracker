@@ -1,6 +1,6 @@
 const mongoCollection = require("../database/mongoCollection");
 const locationCollectionObj = mongoCollection.location;
-const IPUtils = require("../Utils/IPUtils")
+const IPUtils = require("../utils/IPUtils")
 
 const getLocation = async (ip) => {
     if(!ip || typeof ip !== 'string') throw "You must enter IP Address before searching";
