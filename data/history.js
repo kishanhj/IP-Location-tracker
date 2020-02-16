@@ -27,36 +27,26 @@ const addNewSearch = async (searchInput,searchResult,errors) => {
     historyCollection.insertOne(data);
 } 
 
-function toTimestamp(strDate){
-    var datum = Date.parse(strDate);
-    return datum/1000;
-   }
-
 const getSearchHistory = async (startDate,endDate,numOfRecords) => { 
 
-    console.log("Before :"+startDate+":");
-
     if(startDate)
-        startDate =  new Date(`${startDate}`);
+        startDate =  new Date(startDate);
     if(endDate)
-        endDate =  new Date(`${endDate}`);   
+        endDate =  new Date(endDate);   
     if(!numOfRecords)
         numOfRecords = 20;
     numOfRecords = parseInt(numOfRecords);
 
-    //console.log("after :"+startDate);
     const historyCollection = await historyCollectionObj();
     if(!startDate && !endDate){
         const res =  await historyCollection.find({})
         .sort({$natural:-1}).limit(numOfRecords).toArray();
         return res;
     } else if(!startDate && endDate){
-        //console.log("only end: "+endDate)
         const res =  await historyCollection.find({date : {$lte : endDate}})
         .sort({$natural:-1}).limit(numOfRecords).toArray();
         return res;
     } else if(startDate && !endDate){
-        // console.log("here");
         const res =  await historyCollection.find({date : {$gte : startDate}})
         .sort({$natural:-1}).limit(numOfRecords).toArray();
         return res;

@@ -2,7 +2,7 @@ const mongoCollection = require("../database/mongoCollection");
 const locationCollectionObj = mongoCollection.location;
 const IPUtils = require("../utils/IPUtils")
 
-const getLocation = async (ip) => {
+const getLocation = async (ip,phoneNumber) => {
     if(!ip || typeof ip !== 'string') throw "You must enter IP Address before searching";
 
     var numArr = ip.split(".");
@@ -23,6 +23,7 @@ const getLocation = async (ip) => {
     const data = {
         id: res._id,
         ip: ip,
+        phone:phoneNumber,
         city: res.location.city,
         state: res.location.stateprov,
         country : res.location.country,
@@ -46,7 +47,7 @@ const addAllLocation =  async(locations)=>{
 const addLocation = async (location) => {
     const IPStartInt = IPUtils.convertIPtoInt(location.ip_start);
     const IPEndInt = IPUtils.convertIPtoInt(location.ip_end);
-    
+    //console.log(location.city," added");
     const locationObj = {
         location : location,
         ip_start : IPStartInt,

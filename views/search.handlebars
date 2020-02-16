@@ -13,8 +13,10 @@
         <div class="col-sm-3">
         {{#if location}}
         <input class="form-control" id="ipSearchField" name="ip" value="{{location.ip}}" type="text" placeholder="Enter IP address">
+        <input class="form-control" id="phoneNumber" name="phoneNumber" value="{{location.phone}}" type="tel" pattern="[0-9]{10}" placeholder="Phone Number">
         {{else}}
         <input class="form-control" id="ipSearchField" name="ip" type="text" placeholder="Enter IP address">
+        <input class="form-control" id="phoneNumber" name="phoneNumber" type="tel" pattern="[0-9]{10}" placeholder="Phone Number">
         {{/if}}
         </div>
         <div class="col-sm-2">

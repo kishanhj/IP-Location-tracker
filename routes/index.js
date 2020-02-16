@@ -1,6 +1,7 @@
 const path = require("path");
 const locationDataApi = require("../data/location")
 const historyDataApi = require("../data/history");
+const MessageApi = require("../utils/message");
 
 const constructorMethod = app => {
   app.get("/", (req, res) => {
@@ -11,8 +12,8 @@ const constructorMethod = app => {
     const errors = [];
     var location;
       try{
-       location = await locationDataApi.getLocation(req.body.ip);
-
+       location = await locationDataApi.getLocation(req.body.ip,req.body.phoneNumber);
+        MessageApi.messageClient(location);
         res.render("search",{
           "location":location
         });
