@@ -1,9 +1,9 @@
-"# IP-Location-tracker" 
+## IP-Location-tracker 
 
-# Search geo location from IP-addresses
+Search geo location from IP-addresses
 
 
-For Deployment
+# Deployment
 
 1. Open command promt from cloned folder
 2. run command "npm install"
