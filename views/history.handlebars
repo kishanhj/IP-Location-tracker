@@ -4,10 +4,14 @@
     </nav>
     <div class="form-group">
     <form action = "/history" id="searchForm" class="searchForm" method="POST">
-        <input type="date" data-provide="datepicker" placeholder="From" name="startDate">
-        <input type="date" data-provide="datepicker" placeholder="To" name="endDate">
-        <input type="number" placeholder="Number of Records" name="numberOfRec">
+        <label>Start Date:</label>
+        <input type="date" data-provide="datepicker" placeholder="From" name="startDate"/>
+        <label>End Date:</label>
+        <input type="date" data-provide="datepicker" placeholder="To" name="endDate"/>
+        <label>Number of records to display:</label>
+        <input type="number" placeholder="20" name="numberOfRec"/>
         <button class="btn btn-primary float-left no" type="submit">Search</button>
+        <a href="/" class="btn btn-primary" >Back to search</a>
         </div>
     </div>
     </form>
