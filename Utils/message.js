@@ -1,4 +1,4 @@
-var AWS = require('aws-sdk');
+var AWS = require('./node_modules/aws-sdk');
 AWS.config.update({
   accessKeyId: 'AKIAVTXUEYGSRLNKXV2K',
   secretAccessKey: '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',

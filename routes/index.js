@@ -1,7 +1,7 @@
 const path = require("path");
 const locationDataApi = require("../data/location")
 const historyDataApi = require("../data/history");
-const MessageApi = require("../utils/message");
+const MessageApi = require("../Utils/message");
 
 const constructorMethod = app => {
   app.get("/", (req, res) => {
