@@ -1,7 +1,7 @@
 var AWS = require('aws-sdk');
 AWS.config.update({
-  accessKeyId: 'AKIAVTXUEYGSRLNKXV2K',
-  secretAccessKey: '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',
+  accessKeyId: process.env.accessKeyId,
+  secretAccessKey: process.env.secretAccessKey,
   region: 'us-east-1'});
 
 const messageClient = (location) => {
