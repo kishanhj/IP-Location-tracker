@@ -19,5 +19,5 @@ Due to storage constraints only 150000 locations are saved in the MongoDB with I
 
 ## SMS service from AWS SNS
 
-SMS service will work in appliaction hosted on HEROKU in URL : https://morning-headland-59743.herokuapp.com/
+SMS service will work in appliaction hosted on HEROKU in URL : https://morning-headland-59743.herokuapp.com/ .
 For running locally we need to and an .env file
