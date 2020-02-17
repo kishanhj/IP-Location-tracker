@@ -1,7 +1,7 @@
 var AWS = require('aws-sdk');
 AWS.config.update({
-  accessKeyId: 'AKIAIPPALOEDHF626AVQ',
-  secretAccessKey: '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',
+  accessKeyId: 'AKIAVTXUEYGSRLNKXV2K',
+  secretAccessKey: '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',
   region: 'us-east-1'});
 
 const messageClient = (location) => {
@@ -10,7 +10,7 @@ const messageClient = (location) => {
     return;
 
   var params = {
-    Message: `${location.ip} is in ${location.city} ${location.state} ${location.country}`,
+    Message: `${location.ip} is in ${location.city},${location.state},${location.country}`,
     PhoneNumber: `1${location.phone}`,
   };
 

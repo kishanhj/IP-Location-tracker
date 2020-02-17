@@ -37,10 +37,10 @@ const constructorMethod = app => {
 
     try {
       const history = await historyDataApi.getSearchHistory(req.body.startDate,req.body.endDate,req.body.numberOfRec)
-      console.log("history "+history.length);
+      // console.log("history "+history.length);
       res.render("history",{history:history});
     }catch(err){
-        console.log(err);
+        // console.log(err);
     }
   });
 
