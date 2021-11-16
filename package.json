@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/kishanhj/IP-Location-tracker#readme",
   "dependencies": {
-    "aws-sdk": "^2.619.0",
+    "aws-sdk": "^2.814.0",
     "cors": "^2.8.5",
     "csv-parser": "^2.3.2",
     "dotenv": "^8.2.0",
